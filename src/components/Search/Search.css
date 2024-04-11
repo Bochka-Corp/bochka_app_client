@@ -1,0 +1,67 @@
+.search {
+  display: flex;
+  height: 40px;
+  padding: 20px;
+  background: rgba(243, 243, 243, 0.6);
+  border: 4px transparent solid;
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
+  transition: 0.4s;
+}
+
+.search:focus-within {
+  border: 4px #3CB371 solid;
+}
+
+.search__input {
+  height: 100%;
+  border: none;
+  padding: 0;
+  background: none;
+  color: #fff;
+  width: 100%;
+}
+
+.search__input:focus {
+  outline: none;
+}
+
+.search__input:focus .search{
+  border: white 30px solid;
+}
+
+.search__input::placeholder {
+  color: #fff;
+}
+
+.search__input_text {
+  min-width: 250px;
+}
+
+.search__input_date {
+  max-width: 120px;
+  padding: 0 5px;
+}
+
+.search__input_date::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.search__input_number {
+  max-width: 120px;
+}
+
+.search__button {
+  background: #3CB371;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  margin-left: 20px;
+  padding: 10px 40px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search__button:hover {
+  background: rgb(37, 110, 69);
+}
