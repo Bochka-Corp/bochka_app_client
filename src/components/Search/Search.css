@@ -9,6 +9,11 @@
   transition: 0.4s;
 }
 
+.search_result {
+  background: #EDEDEDFF;
+  color: #212a34;
+}
+
 .search:focus-within {
   border: 4px #3CB371 solid;
 }
@@ -26,12 +31,16 @@
   outline: none;
 }
 
-.search__input:focus .search{
-  border: white 30px solid;
-}
-
 .search__input::placeholder {
   color: #fff;
+}
+
+.search__input_result {
+  color: #212a34;
+}
+
+.search__input_result::placeholder {
+  color: #212a34;
 }
 
 .search__input_text {
@@ -52,6 +61,7 @@
 }
 
 .search__button {
+  text-decoration: none;
   background: #3CB371;
   color: #fff;
   border: none;

@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Search() {
+function Search({ result }) {
   return (
-    <form className="search">
+    <form className={result ? 'search search_result' : 'search'}>
       <div className="search__field">
-        <input type="text" placeholder="Куда вы хотите поехать?" className="search__input search__input_text" />
+        <input type="text" placeholder="Куда вы хотите поехать?" className={result ? 'search__input search__input_text search__input_result' : 'search__input search__input_text'} />
       </div>
       <div className="search__field">
         <input
@@ -12,7 +13,7 @@ function Search() {
           placeholder="Заезд"
           onFocus={(e) => (e.target.type = 'date')}
           onBlur={(e) => (e.target.type = 'text')}
-          className="search__input search__input_date"
+          className={result ? 'search__input search__input_date search__input_result' : 'search__input search__input_date'}
         />
       </div>
       <div className="search__field">
@@ -21,15 +22,15 @@ function Search() {
           placeholder="Выезд"
           onFocus={(e) => (e.target.type = 'date')}
           onBlur={(e) => (e.target.type = 'text')}
-          className="search__input search__input_date"
+          className={result ? 'search__input search__input_date search__input_result' : 'search__input search__input_date'}
         />
       </div>
       <div className="search__field">
-        <input type="number" placeholder="Кол-во гостей" className="search__input search__input_number" />
+        <input type="number" placeholder="Кол-во гостей" className={result ? 'search__input search__input_number search__input_result' : 'search__input search__input_number'} />
       </div>
-      <button type="submit" className="search__button">
+      <Link to="/search/moscow" className="search__button">
         Найти
-      </button>
+      </Link>
     </form>
   );
 }

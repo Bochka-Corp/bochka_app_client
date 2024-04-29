@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({ main }) {
   return (
     <header className="header">
-      <div className="header__container">
+      <div className={main ? 'header__container header__container_main' : 'header__container'}>
         <h1 className="header__logo">
           Bochka
         </h1>
