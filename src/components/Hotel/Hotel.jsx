@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header.jsx';
 import HotelImage from '../HotelImage/HotelImage.jsx';
 import wallpapers from '../../carousel/wallpapers.js';
+import RoomCard from '../RoomCard/RoomCard.jsx';
 
 function Hotel() {
   const navigate = useNavigate();
 
-  const [positionStyle, setPositionStyle] = React.useState({});
-  const [position, setPosition] = React.useState(0);
+  const [positionStyle, setPositionStyle] = useState({});
+  const [position, setPosition] = useState(0);
 
   function handleBackButton() {
     navigate(-1);
@@ -119,7 +120,7 @@ function Hotel() {
 
         <div className="hotel__info_interactive">
           <div className="hotel__gallery">
-            <h3 className="hotel__info-title_interactive">
+            <h3 className="hotel__subtitle">
               Галерея
             </h3>
             <div className="hotel__gallery-container">
@@ -169,13 +170,25 @@ function Hotel() {
             </div>
           </div>
           <div className="hotel__map">
-            <h3 className="hotel__info-title_interactive">
+            <h3 className="hotel__subtitle">
               Отель на карте
             </h3>
             <div className="hotel__map-container">
-              asaas
+              <iframe
+                className="hotel__map-content"
+                title="map"
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3Abdb098e5c02d10a236415c85a3e8c89c4d6491cd8aab5eae3c87c86c71cbc479&amp;source=constructor"
+                frameBorder="0"
+              />
             </div>
           </div>
+        </div>
+
+        <h3 className="hotel__subtitle">
+          Наличие мест на 23 – 31 мая для 2 взрослых
+        </h3>
+        <div className="hotel__cards">
+          <RoomCard />
         </div>
       </div>
     </main>

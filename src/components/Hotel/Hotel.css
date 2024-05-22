@@ -86,14 +86,14 @@
   gap: 30px;
   width: 100%;
   box-sizing: border-box;
-  padding: 30px 0 0 0;
+  padding: 30px 0 30px 0;
 }
 
 .hotel__gallery {
   width: 75%;
 }
 
-.hotel__info-title_interactive {
+.hotel__subtitle {
   margin: 0;
   font-size: 28px;
   box-sizing: border-box;
@@ -151,5 +151,20 @@
 }
 
 .hotel__map-container {
+  width: 100%;
+  height: 500px;
+}
 
+.hotel__map-content {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.hotel__cards {
+  box-sizing: border-box;
+  padding: 20px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

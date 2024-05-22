@@ -23,7 +23,18 @@
 }
 
 .header__logo {
-  margin: 0;
+  margin-left: 5px;
+  width: 227px;
+  height: 41px;
+}
+
+.header__logo_green {
+  background: url("../../images/logo_green.svg") no-repeat;
+}
+
+.header__logo_white {
+  background: url("../../images/logo_white.svg") no-repeat;
+  cursor: default;
 }
 
 .header__buttons {

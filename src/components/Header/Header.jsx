@@ -5,9 +5,7 @@ function Header({ main }) {
   return (
     <header className="header">
       <div className={main ? 'header__container header__container_main' : 'header__container'}>
-        <h1 className="header__logo">
-          Bochka
-        </h1>
+        <Link to="/" className={`${main ? 'header__logo header__logo_white' : 'header__logo header__logo_green'}`} />
         <div className="header__buttons">
           <div className="header__icon" />
           <Link to="/login" className="header__link">
