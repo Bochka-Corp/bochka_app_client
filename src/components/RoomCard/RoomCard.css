@@ -74,8 +74,18 @@
   font-size: 18px;
 }
 
-.room-card__includes {
+.room-card__facilities {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 10px;
+}
 
+.room-card__facility {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .room-card__booking {

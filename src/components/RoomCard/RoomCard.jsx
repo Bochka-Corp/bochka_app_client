@@ -88,8 +88,87 @@ function RoomCard() {
           <p className="room-card__text">
             В номере:
           </p>
-          <div className="room-card__includes">
-            Massiv iconoc i nazvanii'
+          <div className="room-card__facilities">
+            <div className="room-card__facility">
+              <svg
+                width="16"
+                height="16"
+                fill="none"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+              >
+                <path
+                  d="M9.99992 1.33331V2.66665L12.4312 2.67461L9.33325 5.77244L10.2274 6.66664L13.3272 3.56696L13.3333 5.99998H14.6666V1.33331H9.99992Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M5.99992 14.6666V13.3254H3.5686L6.66659 10.2275L5.77249 9.33332L2.67266 12.433V9.99998H1.33325V14.6666H5.99992Z"
+                  fill="currentColor"
+                />
+              </svg>
+              35 м2
+            </div>
+            <div className="room-card__facility">
+              <svg
+                width="16"
+                height="16"
+                fill="none"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+              >
+                <path
+                  d="M9.99992 1.33331V2.66665L12.4312 2.67461L9.33325 5.77244L10.2274 6.66664L13.3272 3.56696L13.3333 5.99998H14.6666V1.33331H9.99992Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M5.99992 14.6666V13.3254H3.5686L6.66659 10.2275L5.77249 9.33332L2.67266 12.433V9.99998H1.33325V14.6666H5.99992Z"
+                  fill="currentColor"
+                />
+              </svg>
+              Бесплатный Wi‑Fi
+            </div>
+            <div className="room-card__facility">
+              <svg
+                width="16"
+                height="16"
+                fill="none"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+              >
+                <path
+                  d="M9.99992 1.33331V2.66665L12.4312 2.67461L9.33325 5.77244L10.2274 6.66664L13.3272 3.56696L13.3333 5.99998H14.6666V1.33331H9.99992Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M5.99992 14.6666V13.3254H3.5686L6.66659 10.2275L5.77249 9.33332L2.67266 12.433V9.99998H1.33325V14.6666H5.99992Z"
+                  fill="currentColor"
+                />
+              </svg>
+              Индивидуальная ванная комната
+            </div>
+            <div className="room-card__facility">
+              <svg
+                width="16"
+                height="16"
+                fill="none"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+              >
+                <path
+                  d="M9.99992 1.33331V2.66665L12.4312 2.67461L9.33325 5.77244L10.2274 6.66664L13.3272 3.56696L13.3333 5.99998H14.6666V1.33331H9.99992Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M5.99992 14.6666V13.3254H3.5686L6.66659 10.2275L5.77249 9.33332L2.67266 12.433V9.99998H1.33325V14.6666H5.99992Z"
+                  fill="currentColor"
+                />
+              </svg>
+              Центральное кондиционирование
+            </div>
           </div>
         </div>
         <div className="room-card__booking">
@@ -99,7 +178,7 @@ function RoomCard() {
             </p>
             цена за 8 ночей
           </div>
-          <Link to="/" className="room-card__link">
+          <Link to="/hotel/book/id" className="room-card__link">
             Забронировать
           </Link>
         </div>
