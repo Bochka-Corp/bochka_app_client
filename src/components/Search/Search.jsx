@@ -37,10 +37,10 @@ function Search({ result }) {
           onChange={handleSearchInput}
           value={search}
         />
-        <div className={`${suggestions !== undefined ? 'search__suggestions-container' : ''}`}>
+        <div className={`${suggestions !== undefined ? 'search__suggestions-container' : ''} ${result ? 'search__suggestions-container_result' : ''}`}>
           {
             suggestions ? suggestions.map((suggestion, index) => (
-              <button type="button" key={suggestion.title.text + index} className="search__suggestion" onClick={handleSuggestionClick}>
+              <button type="button" key={suggestion.title.text + index} className={`${result ? 'search__suggestion search__suggestion_result' : 'search__suggestion'}`} onClick={handleSuggestionClick}>
                 {suggestion.title.text}
               </button>
             )) : ''

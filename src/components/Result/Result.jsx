@@ -1,7 +1,11 @@
 import React from 'react';
+import {
+  YMaps, Map, Clusterer, Placemark,
+} from '@pbe/react-yandex-maps';
 import Header from '../Header/Header.jsx';
 import Search from '../Search/Search.jsx';
 import HotelCard from '../HotelCard/HotelCard.jsx';
+import hotels from '../../utils/constants/hotels/hotels.js';
 
 function Result() {
   return (
@@ -31,20 +35,39 @@ function Result() {
             </button>
           </div>
           <div className="result__hotel-cards">
-            <HotelCard />
-            <HotelCard />
-            <HotelCard />
-            <HotelCard />
-            <HotelCard />
+            {
+              hotels.map((hotel) => (
+                <HotelCard key={hotel.id} data={hotel} />
+              ))
+            }
           </div>
         </div>
         <div className="result__map-content">
-          <iframe
-            className="result__map"
-            title="map"
-            src="https://yandex.ru/map-widget/v1/?um=constructor%3Abdb098e5c02d10a236415c85a3e8c89c4d6491cd8aab5eae3c87c86c71cbc479&amp;source=constructor"
-            frameBorder="0"
-          />
+          <YMaps>
+            <Map className="result__map" defaultState={{ center: [55.75, 37.57], zoom: 10 }}>
+              <Clusterer
+                options={{
+                  preset: 'islands#darkGreenClusterIcons',
+                  groupByCoordinates: false,
+                }}
+              >
+                {
+                  hotels.map((hotel) => (
+                    <Placemark
+                      key={hotel.id}
+                      geometry={hotel.coordinates}
+                      options={
+                        {
+                          preset: 'islands#circleDotIcon',
+                          iconColor: '#3CB371',
+                        }
+                      }
+                    />
+                  ))
+                }
+              </Clusterer>
+            </Map>
+          </YMaps>
         </div>
       </div>
     </main>

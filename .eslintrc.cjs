@@ -26,6 +26,8 @@ module.exports = {
     'class-methods-use-this' : 'off',
     'prefer-promise-reject-errors': 'off',
     'react/no-array-index-key': 'off',
+    'import/no-cycle': 'off',
+    'react/jsx-no-bind': 'off',
     'jsx-a11y/control-has-associated-label': 'off'
   },
 }

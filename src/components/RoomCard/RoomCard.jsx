@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import wallpapers from '../../carousel/wallpapers.js';
 import RoomImage from '../RoomImage/RoomImage.jsx';
 
-function RoomCard() {
+function RoomCard({ data }) {
   const [positionStyle, setPositionStyle] = useState({});
   const [position, setPosition] = useState(0);
 
@@ -24,10 +23,10 @@ function RoomCard() {
       <div className="room-card__gallery">
         <div className="room-card__images" style={positionStyle}>
           {
-            wallpapers.map((imageInfo) => (
+            data.images.map((imageInfo, index) => (
               <RoomImage
-                image={imageInfo.path}
-                key={imageInfo.path}
+                image={imageInfo}
+                key={imageInfo + index}
               />
             ))
           }
@@ -56,7 +55,7 @@ function RoomCard() {
         <button
           type="button"
           className="room-card__gallery-btn room-card__gallery-btn_right"
-          disabled={wallpapers.length - 1 === position}
+          disabled={data.images.length - 1 === position}
           onClick={handleClickNext}
         >
           <svg
@@ -79,106 +78,43 @@ function RoomCard() {
       <div className="room-card__info-container">
         <div className="room-card__info">
           <h4 className="room-card__title">
-            Стандартный двухместный номер, вид в холл отеля
+            {data.name}
           </h4>
           <p className="room-card__text">
-            Площадь: 15 м
+            Площадь:
+            {' '}
+            {data.area}
+            {' '}
+            м
             <sup>2</sup>
           </p>
           <p className="room-card__text">
             В номере:
           </p>
           <div className="room-card__facilities">
-            <div className="room-card__facility">
-              <svg
-                width="16"
-                height="16"
-                fill="none"
-                viewBox="0 0 16 16"
-                xmlns="http://www.w3.org/2000/svg"
-                focusable="false"
-              >
-                <path
-                  d="M9.99992 1.33331V2.66665L12.4312 2.67461L9.33325 5.77244L10.2274 6.66664L13.3272 3.56696L13.3333 5.99998H14.6666V1.33331H9.99992Z"
-                  fill="currentColor"
-                />
-                <path
-                  d="M5.99992 14.6666V13.3254H3.5686L6.66659 10.2275L5.77249 9.33332L2.67266 12.433V9.99998H1.33325V14.6666H5.99992Z"
-                  fill="currentColor"
-                />
-              </svg>
-              35 м2
-            </div>
-            <div className="room-card__facility">
-              <svg
-                width="16"
-                height="16"
-                fill="none"
-                viewBox="0 0 16 16"
-                xmlns="http://www.w3.org/2000/svg"
-                focusable="false"
-              >
-                <path
-                  d="M9.99992 1.33331V2.66665L12.4312 2.67461L9.33325 5.77244L10.2274 6.66664L13.3272 3.56696L13.3333 5.99998H14.6666V1.33331H9.99992Z"
-                  fill="currentColor"
-                />
-                <path
-                  d="M5.99992 14.6666V13.3254H3.5686L6.66659 10.2275L5.77249 9.33332L2.67266 12.433V9.99998H1.33325V14.6666H5.99992Z"
-                  fill="currentColor"
-                />
-              </svg>
-              Бесплатный Wi‑Fi
-            </div>
-            <div className="room-card__facility">
-              <svg
-                width="16"
-                height="16"
-                fill="none"
-                viewBox="0 0 16 16"
-                xmlns="http://www.w3.org/2000/svg"
-                focusable="false"
-              >
-                <path
-                  d="M9.99992 1.33331V2.66665L12.4312 2.67461L9.33325 5.77244L10.2274 6.66664L13.3272 3.56696L13.3333 5.99998H14.6666V1.33331H9.99992Z"
-                  fill="currentColor"
-                />
-                <path
-                  d="M5.99992 14.6666V13.3254H3.5686L6.66659 10.2275L5.77249 9.33332L2.67266 12.433V9.99998H1.33325V14.6666H5.99992Z"
-                  fill="currentColor"
-                />
-              </svg>
-              Индивидуальная ванная комната
-            </div>
-            <div className="room-card__facility">
-              <svg
-                width="16"
-                height="16"
-                fill="none"
-                viewBox="0 0 16 16"
-                xmlns="http://www.w3.org/2000/svg"
-                focusable="false"
-              >
-                <path
-                  d="M9.99992 1.33331V2.66665L12.4312 2.67461L9.33325 5.77244L10.2274 6.66664L13.3272 3.56696L13.3333 5.99998H14.6666V1.33331H9.99992Z"
-                  fill="currentColor"
-                />
-                <path
-                  d="M5.99992 14.6666V13.3254H3.5686L6.66659 10.2275L5.77249 9.33332L2.67266 12.433V9.99998H1.33325V14.6666H5.99992Z"
-                  fill="currentColor"
-                />
-              </svg>
-              Центральное кондиционирование
-            </div>
+            {
+              data.facilities.map((facility) => (
+                <div className="room-card__facility">
+                  <img src={facility.image} alt={facility.name} />
+                  {facility.name}
+                </div>
+              ))
+            }
           </div>
         </div>
         <div className="room-card__booking">
           <div className="room-card__pricing">
             <p className="room-card__price">
-              48500₽
+              {data.price}
+              ₽
             </p>
-            цена за 8 ночей
+            цена за
+            {' '}
+            {data.nights_count}
+            {' '}
+            ночи(-ей)
           </div>
-          <Link to="/hotel/book/id" className="room-card__link">
+          <Link to="/hotel/1/book/1" className="room-card__link">
             Забронировать
           </Link>
         </div>

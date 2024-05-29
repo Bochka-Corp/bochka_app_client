@@ -1,9 +1,37 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import Header from '../Header/Header.jsx';
-import image1 from '../../images/image1.jpg';
+import hotels from '../../utils/constants/hotels/hotels.js';
+import BookingPopup from '../BookingPopup/BookingPopup.jsx';
 
 function Booking() {
+  const params = useParams();
+
+  const hotel = hotels[params.hotelId - 1];
+  const room = hotel.rooms[params.roomId - 1];
+
+  const [name, setName] = useState('');
+  const [surname, setSurname] = useState('');
+  const [email, setEmail] = useState('');
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  function handleNameInput(e) {
+    setName(e.target.value);
+  }
+
+  function handleSurnameInput(e) {
+    setSurname(e.target.value);
+  }
+
+  function handleEmailInput(e) {
+    setEmail(e.target.value);
+  }
+
+  function handleOpenPopup() {
+    setIsPopupOpen(!isPopupOpen);
+  }
+
   return (
     <section className="booking">
       <Header />
@@ -13,7 +41,9 @@ function Booking() {
             <div className="booking__about">
               <div className="booking__header">
                 <h1 className="booking__title">
-                  Отель Мандарин Москва 5
+                  {hotel.name}
+                  {' '}
+                  {hotel.stars_count}
                   {' '}
                   <svg
                     version="1.1"
@@ -32,7 +62,9 @@ function Booking() {
                   </svg>
                 </h1>
                 <div className="booking__title-info">
-                  <span className="booking__review">4.6</span>
+                  <span className="booking__review">
+                    {hotel.review}
+                  </span>
                   <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       fillRule="evenodd"
@@ -43,7 +75,7 @@ function Booking() {
                       strokeWidth="1.25"
                     />
                   </svg>
-                  Москва, Ольховская улица, 23
+                  {hotel.address}
                 </div>
               </div>
 
@@ -51,7 +83,7 @@ function Booking() {
                 <div className="booking__dates">
                   <div className="booking__date">
                     <span className="booking__day">
-                      29 мая
+                      10 июня
                     </span>
                     <span className="booking__time">
                       c 15:00
@@ -60,10 +92,10 @@ function Booking() {
                   <div className="booking__date booking__date_dash" />
                   <div className="booking__date">
                     <span className="booking__day">
-                      31 мая
+                      13 июня
                     </span>
                     <span className="booking__time">
-                      до 15:00
+                      до 12:00
                     </span>
                   </div>
                 </div>
@@ -74,7 +106,7 @@ function Booking() {
 
               <div className="booking__room-info">
                 <h2 className="booking__room-name">
-                  Делюкс с двумя раздельными кроватями
+                  {room.name}
                 </h2>
                 <p className="booking__room-beds">
                   Места в номере
@@ -100,7 +132,7 @@ function Booking() {
               </div>
             </div>
             <div className="booking__gallery">
-              <img src={image1} alt="фото номера" className="booking__image" />
+              <img src={room.images[0]} alt="фото номера" className="booking__image" />
             </div>
           </div>
 
@@ -114,11 +146,11 @@ function Booking() {
             <div className="booking__inputs">
               <label className="booking__label" htmlFor="booking__input-1">
                 Фамилия
-                <input type="text" className="booking__input" id="booking__input-1" />
+                <input type="text" className="booking__input" id="booking__input-1" value={name} onChange={handleNameInput} />
               </label>
               <label className="booking__label" htmlFor="booking__input-2">
                 Имя
-                <input type="text" className="booking__input" id="booking__input-2" />
+                <input type="text" className="booking__input" id="booking__input-2" value={surname} onChange={handleSurnameInput} />
               </label>
             </div>
           </div>
@@ -133,7 +165,7 @@ function Booking() {
             <div className="booking__inputs">
               <label className="booking__label" htmlFor="booking__input-3">
                 Электронная почта
-                <input type="email" className="booking__input" id="booking__input-3" />
+                <input type="email" className="booking__input" id="booking__input-3" value={email} onChange={handleEmailInput} />
               </label>
               <label className="booking__label" htmlFor="booking__input-4">
                 Телефон
@@ -150,10 +182,11 @@ function Booking() {
             </h2>
             <div className="booking__pricing-container">
               <span className="booking__pricing-item">
-                2 ночи
+                3 ночи
               </span>
               <span className="booking__pricing-item">
-                23000₽
+                {room.price}
+                ₽
               </span>
             </div>
           </div>
@@ -162,14 +195,23 @@ function Booking() {
               Итого:
             </span>
             <span className="booking__price">
-              23000₽
+              {room.price}
+              ₽
             </span>
           </div>
-          <Link to="/" className="booking__btn">
+          <button type="button" onClick={handleOpenPopup} className="booking__btn">
             Оплатить
-          </Link>
+          </button>
         </div>
       </div>
+      <BookingPopup
+        hotel={hotel}
+        surname={surname}
+        name={name}
+        email={email}
+        isOpen={isPopupOpen}
+        closePopup={handleOpenPopup}
+      />
     </section>
   );
 }

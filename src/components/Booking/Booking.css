@@ -1,5 +1,6 @@
 .booking {
   color: #212a34;
+  position: relative;
 }
 
 .booking__container {
@@ -245,6 +246,8 @@
   padding: 10px 0;
   color: #fff;
   transition: 0.3s;
+  border: none;
+  cursor: pointer;
 }
 
 .booking__btn:hover {

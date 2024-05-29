@@ -22,8 +22,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/search/*" element={<Result />} />
-        <Route path="/hotels/*" element={<Hotel />} />
-        <Route path="/hotel/book/*" element={<Booking />} />
+        <Route path="/hotel/:id" element={<Hotel />} />
+        <Route path="/hotel/:hotelId/book/:roomId" element={<Booking />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>

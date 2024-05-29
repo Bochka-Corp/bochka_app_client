@@ -64,6 +64,10 @@
   flex-direction: column;
 }
 
+.search__suggestions-container_result {
+  background: #EDEDEDFF;
+}
+
 .search__suggestion {
   background: none;
   border: none;
@@ -74,6 +78,10 @@
   border-bottom: 2px solid #3CB371;
   padding: 7px 0;
   transition: 0.3s;
+}
+
+.search__suggestion_result {
+  color: #212a34;
 }
 
 .search__suggestion:hover {
