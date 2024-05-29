@@ -22,6 +22,12 @@ module.exports = {
     'import/extensions': 'off',
     'react/prop-types': 'off',
     'no-return-assign': 'off',
+    'no-underscore-dangle': 'off',
+    'class-methods-use-this' : 'off',
+    'prefer-promise-reject-errors': 'off',
+    'react/no-array-index-key': 'off',
+    'import/no-cycle': 'off',
+    'react/jsx-no-bind': 'off',
     'jsx-a11y/control-has-associated-label': 'off'
   },
 }

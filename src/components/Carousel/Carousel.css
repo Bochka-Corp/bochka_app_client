@@ -34,7 +34,7 @@
 
 .carousel__tagline::before {
   content: '';
-  background: url("../../images/decoration.svg");
+  background: url("../../assets/images/decoration.svg");
   position: absolute;
   top: -35px;
   left: 0;

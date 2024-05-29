@@ -10,3 +10,9 @@
 @import url("./components/NotFound/NotFound.css");
 @import url("./components/Result/Result.css");
 @import url("./components/HotelCard/HotelCard.css");
+@import url("./components/Hotel/Hotel.css");
+@import url("./components/HotelImage/HotelImage.css");
+@import url("./components/RoomCard/RoomCard.css");
+@import url("./components/RoomImage/RoomImage.css");
+@import url("./components/Booking/Booking.css");
+@import url("./components/BookingPopup/BookingPopup.css");

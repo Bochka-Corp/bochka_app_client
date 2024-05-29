@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import wallpapers from '../../carousel/wallpapers.js';
+import wallpapers from '../../utils/constants/carousel/wallpapers.js';
 import Wallpaper from '../Wallpaper/Wallpaper.jsx';
 import Search from '../Search/Search.jsx';
 
