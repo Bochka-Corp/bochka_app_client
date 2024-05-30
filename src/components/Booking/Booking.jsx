@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Header from '../Header/Header.jsx';
 import hotels from '../../utils/constants/hotels/hotels.js';
 import BookingPopup from '../BookingPopup/BookingPopup.jsx';
@@ -30,6 +30,7 @@ function Booking() {
 
   function handleOpenPopup() {
     setIsPopupOpen(!isPopupOpen);
+    ym(97162791, 'reachGoal', 'оформил бронирование');
   }
 
   return (
