@@ -239,8 +239,8 @@ function Hotel() {
         </h3>
         <div className="hotel__facilities">
           {
-            hotel.facilities.map((facility) => (
-              <div className="hotel__facility">
+            hotel.facilities.map((facility, index) => (
+              <div key={facility.name + index} className="hotel__facility">
                 <img src={facility.image} alt={facility.name} />
                 {facility.name}
               </div>

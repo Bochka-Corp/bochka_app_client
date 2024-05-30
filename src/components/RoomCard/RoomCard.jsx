@@ -93,8 +93,8 @@ function RoomCard({ data }) {
           </p>
           <div className="room-card__facilities">
             {
-              data.facilities.map((facility) => (
-                <div className="room-card__facility">
+              data.facilities.map((facility, index) => (
+                <div key={facility.image + index} className="room-card__facility">
                   <img src={facility.image} alt={facility.name} />
                   {facility.name}
                 </div>
