@@ -16,3 +16,9 @@
 @import url("./components/RoomImage/RoomImage.css");
 @import url("./components/Booking/Booking.css");
 @import url("./components/BookingPopup/BookingPopup.css");
+@import url("./components/Profile/Profile.css");
+@import url("./components/Bookings/Bookings.css");
+@import url("./components/BookingCard/BookingCard.css");
+@import url("./components/AdminPanel/AdminPanel.css");
+@import url("./components/AdminPopup/AdminPopup.css");
+@import url("./components/AdminCard/AdminCard.css");

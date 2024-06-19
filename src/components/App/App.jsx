@@ -7,6 +7,9 @@ import NotFound from '../NotFound/NotFound.jsx';
 import Result from '../Result/Result.jsx';
 import Hotel from '../Hotel/Hotel.jsx';
 import Booking from '../Booking/Booking.jsx';
+import Profile from '../Profile/Profile.jsx';
+import Bookings from '../Bookings/Bookings.jsx';
+import AdminPanel from '../AdminPanel/AdminPanel.jsx';
 
 function App() {
   const { pathname } = useLocation();
@@ -19,8 +22,11 @@ function App() {
     <div className="app">
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/admin" element={<AdminPanel />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/bookings" element={<Bookings />} />
         <Route path="/search/*" element={<Result />} />
         <Route path="/hotel/:id" element={<Hotel />} />
         <Route path="/hotel/:hotelId/book/:roomId" element={<Booking />} />
