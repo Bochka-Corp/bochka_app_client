@@ -14,7 +14,7 @@ class Api {
   }
 
   getSuggestions(search) {
-    return axios.get(`https://justcors.com/tl_1ac3e1c/https://suggest-maps.yandex.ru/v1/suggest?apikey=0e42c64c-0045-4b29-ba5d-cb9f4001bc0a&types=locality&results=5&text=${search}`, {
+    return axios.get(`https://suggest-maps.yandex.ru/v1/suggest?apikey=0e42c64c-0045-4b29-ba5d-cb9f4001bc0a&types=locality&results=5&text=${search}`, {
       headers: {
         'Content-Type': 'application/json',
       },

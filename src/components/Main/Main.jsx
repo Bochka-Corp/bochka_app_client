@@ -5,7 +5,7 @@ import Header from '../Header/Header.jsx';
 function Main() {
   return (
     <main className="main">
-      <Header main />
+      <Header main isLoggedIn />
       <Carousel />
     </main>
   );
