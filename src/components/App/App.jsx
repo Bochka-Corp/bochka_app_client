@@ -27,9 +27,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/bookings" element={<Bookings />} />
-        <Route path="/search/*" element={<Result />} />
+        <Route path="/search/:city" element={<Result />} />
         <Route path="/hotel/:id" element={<Hotel />} />
-        <Route path="/hotel/:hotelId/book/:roomId" element={<Booking />} />
+        <Route path="/hotel/:hotelId/room/:roomId/booking" element={<Booking />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>

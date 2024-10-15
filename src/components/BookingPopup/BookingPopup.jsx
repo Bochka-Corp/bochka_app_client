@@ -19,10 +19,13 @@ function BookingPopup({
             {`"${hotel.name}"`}
           </p>
           <p className="booking-popup__text-item">
-            {`${surname} ${name} - 2 гостя`}
+            {`${surname} ${name} - ${sessionStorage.getItem('guests')} гостя (-ей)`}
           </p>
           <p className="booking-popup__text-item">
-            10.06.2024 - 13.06.2024
+            {sessionStorage.getItem('enter')}
+            .10.2024 -
+            {sessionStorage.getItem('exit')}
+            .10.2024
           </p>
           <div className="booking-popup__text-email">
             <p className="booking-popup__text-item">

@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import RoomImage from '../RoomImage/RoomImage.jsx';
+import conditionerImage from '../../assets/images/Conditioner.svg';
+import wifiImage from '../../assets/images/wifi.svg';
+import bathImage from '../../assets/images/Bath.svg';
+import displayImage from '../../assets/images/Display.svg';
 
-function RoomCard({ data }) {
+function RoomCard({ data, admin }) {
+  const { id } = useParams();
+
   const [positionStyle, setPositionStyle] = useState({});
   const [position, setPosition] = useState(0);
 
@@ -19,14 +25,14 @@ function RoomCard({ data }) {
   }, [position]);
 
   return (
-    <div className="room-card">
+    <div className={`room-card ${admin && 'room-card_admin'}`}>
       <div className="room-card__gallery">
         <div className="room-card__images" style={positionStyle}>
           {
-            data.images.map((imageInfo, index) => (
+            data.photos.map((image) => (
               <RoomImage
-                image={imageInfo}
-                key={imageInfo + index}
+                image={image.url}
+                key={image.id}
               />
             ))
           }
@@ -55,7 +61,7 @@ function RoomCard({ data }) {
         <button
           type="button"
           className="room-card__gallery-btn room-card__gallery-btn_right"
-          disabled={data.images.length - 1 === position}
+          disabled={data.photos.length - 1 === position}
           onClick={handleClickNext}
         >
           <svg
@@ -83,7 +89,7 @@ function RoomCard({ data }) {
           <p className="room-card__text">
             Площадь:
             {' '}
-            {data.area}
+            {data.square}
             {' '}
             м
             <sup>2</sup>
@@ -93,31 +99,69 @@ function RoomCard({ data }) {
           </p>
           <div className="room-card__facilities">
             {
-              data.facilities.map((facility, index) => (
-                <div key={facility.image + index} className="room-card__facility">
-                  <img src={facility.image} alt={facility.name} />
-                  {facility.name}
+              data.isConditioner && (
+                <div className="room-card__facility">
+                  <img src={conditionerImage} alt="Кондиционер в номере" />
+                  Кондиционер в номере
                 </div>
-              ))
+              )
+            }
+            {
+              data.isWiFi && (
+                <div className="room-card__facility">
+                  <img src={wifiImage} alt="Кондиционер в номере" />
+                  WiFi в номере
+                </div>
+              )
+            }
+            {
+              data.isShower && (
+                <div className="room-card__facility">
+                  <img src={bathImage} alt="Кондиционер в номере" />
+                  Душ в номере
+                </div>
+              )
+            }
+            {
+              data.isTV && (
+                <div className="room-card__facility">
+                  <img src={displayImage} alt="Кондиционер в номере" />
+                  Телевизор в номере
+                </div>
+              )
             }
           </div>
         </div>
-        <div className="room-card__booking">
-          <div className="room-card__pricing">
-            <p className="room-card__price">
-              {data.price}
-              ₽
-            </p>
-            цена за
-            {' '}
-            {data.nights_count}
-            {' '}
-            ночи(-ей)
-          </div>
-          <Link to="/hotel/1/book/1" className="room-card__link">
-            Забронировать
-          </Link>
-        </div>
+        {
+          admin ? (
+            <div className="room-card__booking">
+              <div className="room-card__pricing">
+                <p className="room-card__price">
+                  {data.price}
+                  ₽
+                </p>
+                цена за сутки
+              </div>
+            </div>
+          ) : (
+            <div className="room-card__booking">
+              <div className="room-card__pricing">
+                <p className="room-card__price">
+                  {data.price * sessionStorage.getItem('days')}
+                  ₽
+                </p>
+                цена за
+                {' '}
+                {sessionStorage.getItem('days')}
+                {' '}
+                ночи(-ей)
+              </div>
+              <Link to={`/hotel/${id}/room/${data.id}/booking`} className="room-card__link">
+                Забронировать
+              </Link>
+            </div>
+          )
+        }
       </div>
     </div>
   );
