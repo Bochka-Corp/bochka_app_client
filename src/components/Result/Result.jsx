@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   YMaps, Map, Clusterer, Placemark,
 } from '@pbe/react-yandex-maps';
+import { useParams } from 'react-router-dom';
 import Header from '../Header/Header.jsx';
 import Search from '../Search/Search.jsx';
 import HotelCard from '../HotelCard/HotelCard.jsx';
-import hotels from '../../utils/constants/hotels/hotels.js';
+import api from '../../utils/Api.js';
 
 function Result() {
+  const [hotels, setHotels] = useState([]);
+
+  const { city } = useParams();
+
+  useEffect(() => {
+    api.getHotels(city)
+      .then((res) => setHotels(res));
+  }, [city]);
+
   return (
     <main className="result">
       <Header />
@@ -55,7 +65,7 @@ function Result() {
                   hotels.map((hotel) => (
                     <Placemark
                       key={hotel.id}
-                      geometry={hotel.coordinates}
+                      geometry={[hotel.latitude, hotel.longitude]}
                       options={
                         {
                           preset: 'islands#circleDotIcon',

@@ -1,7 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Register() {
+  const navigate = useNavigate();
+
+  function handleLogin() {
+    navigate('/');
+    sessionStorage.setItem('isLoggedIn', true);
+  }
+
   return (
     <section className="login">
       <div className="login__container">
@@ -21,7 +28,7 @@ function Register() {
             Пароль
           </span>
           <input className="login__input" type="password" placeholder="********" />
-          <button className="login__submit" type="submit">
+          <button className="login__submit" onClick={handleLogin} type="submit">
             Регистрация
           </button>
           <p className="login__text">

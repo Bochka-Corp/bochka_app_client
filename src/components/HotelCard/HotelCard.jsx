@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import petImage from '../../assets/images/Cat.svg';
 
 function HotelCard({ data }) {
   return (
     <Link to={`/hotel/${data.id}`} className="hotel-card">
       <div className="hotel-card__carousel">
-        <img src={data.images[0]} alt="отель" className="hotel-card__img" />
+        <img src={data.photos[0].url} alt={data.name} className="hotel-card__img" />
       </div>
       <div className="hotel-card__container">
         <div className="hotel-card__info-main">
@@ -14,10 +15,10 @@ function HotelCard({ data }) {
           </h2>
           <div className="hotel-card__reviews">
             <span className="hotel-card__review">
-              {data.review}
+              5
             </span>
             {' '}
-            {data.review_count}
+            1000
             {' '}
             отзывов
           </div>
@@ -33,7 +34,7 @@ function HotelCard({ data }) {
                   strokeWidth="1.25"
                 />
               </svg>
-              {data.location}
+              {data.address}
             </div>
             <div className="hotel-card__location">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +45,7 @@ function HotelCard({ data }) {
                   strokeWidth="1.25"
                 />
               </svg>
-              {data.distance_center}
+              5
               {' '}
               км до центра
             </div>
@@ -52,7 +53,7 @@ function HotelCard({ data }) {
         </div>
         <div className="hotel-card__info-advantages">
           <div className="hotel-card__star">
-            {data.stars_count}
+            {data.stars}
             {' '}
             <svg
               className="hotel-card__star-icon"
@@ -69,9 +70,9 @@ function HotelCard({ data }) {
           </div>
           <div className="hotel-card__icons">
             {
-              data.facilities.map((facility) => (
-                <img className="hotel-card__icon" src={facility.image} alt="удобство" key={facility.name} />
-              ))
+              data.petFriendly && (
+                <img className="hotel-card__icon" src={petImage} alt="удобство" />
+              )
             }
           </div>
         </div>
@@ -107,7 +108,7 @@ function HotelCard({ data }) {
           <div className="hotel-card__price">
             от
             {' '}
-            {data.cost_per_period}
+            {data.rooms[0].price * Number(sessionStorage.getItem('days'))}
             {' '}
             <svg
               fill="#3CB371"
@@ -128,7 +129,7 @@ function HotelCard({ data }) {
           <div className="hotel-card__price">
             от
             {' '}
-            {data.cost_per_day}
+            {data.rooms[0].price}
             {' '}
             <svg
               fill="#3CB371"

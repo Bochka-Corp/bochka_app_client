@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import api from '../../utils/Api.js';
 
 function Search({ result }) {
+  const navigate = useNavigate();
+
   const [search, setSearch] = useState('');
   const [suggestions, setSuggestions] = useState(undefined);
   const [typing, setTyping] = useState(false);
+
+  const [enter, setEnter] = useState('');
+  const [exit, setExit] = useState('');
+  const [guests, setGuests] = useState('');
 
   function handleSearchInput(e) {
     setSearch(e.target.value);
@@ -16,6 +22,26 @@ function Search({ result }) {
     setSearch(e.target.innerText);
     setSuggestions(undefined);
     setTyping(false);
+  }
+
+  function handleEnterChange(e) {
+    setEnter(e.target.value);
+  }
+
+  function handleExitChange(e) {
+    setExit(e.target.value);
+  }
+
+  function handleGuestsChange(e) {
+    setGuests(e.target.value);
+  }
+
+  function handleSearchSubmit() {
+    sessionStorage.setItem('days', exit.slice(-2) - enter.slice(-2));
+    sessionStorage.setItem('enter', enter.slice(-2));
+    sessionStorage.setItem('exit', exit.slice(-2));
+    sessionStorage.setItem('guests', guests);
+    navigate(`/search/${search}`);
   }
 
   useEffect(() => {
@@ -54,6 +80,8 @@ function Search({ result }) {
           onFocus={(e) => (e.target.type = 'date')}
           onBlur={(e) => (e.target.type = 'text')}
           className={result ? 'search__input search__input_date search__input_result' : 'search__input search__input_date'}
+          value={enter}
+          onChange={handleEnterChange}
         />
       </div>
       <div className="search__field">
@@ -63,6 +91,8 @@ function Search({ result }) {
           onFocus={(e) => (e.target.type = 'date')}
           onBlur={(e) => (e.target.type = 'text')}
           className={result ? 'search__input search__input_date search__input_result' : 'search__input search__input_date'}
+          value={exit}
+          onChange={handleExitChange}
         />
       </div>
       <div className="search__field">
@@ -70,11 +100,13 @@ function Search({ result }) {
           type="number"
           placeholder="Кол-во гостей"
           className={result ? 'search__input search__input_number search__input_result' : 'search__input search__input_number'}
+          value={guests}
+          onChange={handleGuestsChange}
         />
       </div>
-      <Link to="/search/moscow" className="search__button">
+      <button type="button" onClick={handleSearchSubmit} className="search__button">
         Найти
-      </Link>
+      </button>
     </form>
   );
 }

@@ -1,16 +1,15 @@
 import React from 'react';
-import hotel from '../../assets/images/arbat3.webp';
 
-function BookingCard() {
+function BookingCard({ booking }) {
   return (
     <div className="booking-card">
       <div className="booking-card__carousel">
-        <img src={hotel} alt="отель" className="booking-card__img" />
+        <img src={booking.hotel.photos[0].url} alt="отель" className="booking-card__img" />
       </div>
       <div className="booking-card__container">
         <div className="booking-card__info-main">
           <h2 className="booking-card__title">
-            Hotel Raduga
+            {booking.hotel.name}
           </h2>
           <div className="booking-card__info">
             <div className="booking-card__location">
@@ -24,21 +23,37 @@ function BookingCard() {
                   strokeWidth="1.25"
                 />
               </svg>
-              Moscow, orexovaya street 23
+              {booking.hotel.address}
             </div>
             <div className="booking-card__dates">
               <p className="booking-card__date">
-                Заезд: 23 авг 2024 в 15:00
+                Заезд:
+                {' '}
+                {booking.startDate.slice(-2)}
+                {' '}
+                окт 2024 в
+                {' '}
+                {booking.room.checkInHours}
+                :00
               </p>
               <p className="booking-card__date">
-                Отъезд: 29 авг 2024 в 12:00
+                Отъезд:
+                {' '}
+                {booking.finishDate.slice(-2)}
+                {' '}
+                окт 2024 в
+                {' '}
+                {booking.room.checkOutHours}
+                :00
               </p>
             </div>
           </div>
         </div>
         <div className="booking-card__info-price">
           <div className="booking-card__price-text">
-            К оплате: 9000
+            К оплате:
+            {' '}
+            {booking.room.price * (booking.finishDate.slice(-2) - booking.startDate.slice(-2))}
             {' '}
             <svg
               fill="#3CB371"

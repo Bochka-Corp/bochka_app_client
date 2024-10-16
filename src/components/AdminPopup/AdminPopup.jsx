@@ -1,8 +1,12 @@
 import React from 'react';
 
-function AdminPopup() {
+function AdminPopup({ isOpen, setIsOpen }) {
+  function handleCloseButtonClick() {
+    setIsOpen(false);
+  }
+
   return (
-    <div className="admin-popup">
+    <div className={`${isOpen ? 'admin-popup admin-popup_active' : 'admin-popup'}`}>
       <div className="admin-popup__container">
         <h2 className="admin-popup__title">
           Введите данные об отеле
@@ -122,6 +126,7 @@ function AdminPopup() {
             Добавить отель
           </button>
         </form>
+        <button type="button" className="admin-popup__button-close" onClick={handleCloseButtonClick} />
       </div>
     </div>
   );

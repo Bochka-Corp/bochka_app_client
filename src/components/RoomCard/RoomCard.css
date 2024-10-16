@@ -8,6 +8,11 @@
   border-radius: 10px;
 }
 
+.room-card_admin {
+  background-color: #e6e6e6;
+  box-shadow: 0 0 10px 5px rgba(78, 80, 78, 0.25);
+}
+
 .room-card__gallery {
   width: 35%;
   overflow: hidden;

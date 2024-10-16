@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-function Header({ main, isLoggedIn }) {
+function Header({ main }) {
   const location = useLocation();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setIsLoggedIn(sessionStorage.getItem('isLoggedIn'));
+  }, [location]);
 
   return (
     <header className="header">

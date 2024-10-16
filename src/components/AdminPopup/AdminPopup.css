@@ -28,6 +28,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .admin-popup__title {
@@ -167,4 +168,21 @@
 
 .admin-popup__button:hover {
   background: rgb(37, 110, 69);
+}
+
+.admin-popup__button-close {
+  position: absolute;
+  background: url("../../assets/images/close-button.svg") transparent center center no-repeat;
+  border: none;
+  width: 32px;
+  height: 32px;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  padding: 0;
+  transition: 0.3s;
+}
+
+.admin-popup__button-close:hover {
+  opacity: 0.6;
 }

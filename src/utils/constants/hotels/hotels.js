@@ -5,7 +5,7 @@ import hotel4 from '../../../assets/images/hotel4.jpg';
 
 import card from '../../../assets/images/Card.svg';
 import cat from '../../../assets/images/Cat.svg';
-import condicioner from '../../../assets/images/Condicioner.svg';
+import condicioner from '../../../assets/images/Conditioner.svg';
 import display from '../../../assets/images/Display.svg';
 import dumbbell from '../../../assets/images/Dumbbell_Large.svg';
 import medicine from '../../../assets/images/Medical_Kit.svg';

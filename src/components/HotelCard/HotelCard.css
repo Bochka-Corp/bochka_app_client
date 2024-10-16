@@ -7,6 +7,7 @@
   transition: 0.3s;
   color: #212a34;
   text-decoration: none;
+  height: 200px;
 }
 
 .hotel-card:hover {
